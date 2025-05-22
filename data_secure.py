@@ -10,7 +10,7 @@ from hashlib import pbkdf2_hmac
 # data imformation from user
 DATA_FILE = "secure_data.json"
 SALT = b"secure_salt_value"
-LOCKOUT_DURAION = 60
+LOCKOUT_DURATION = 60
 
 # section login detail
 if "authenticated_user" not in st.session_state:
@@ -104,7 +104,7 @@ elif choice == "Login":
                 st.error(f"Invalid Credential! Attempts left: {remaining}")
 
                 if st.session_state.failed_attempts >= 3:
-                    st.session_state.lockout_time = time.time() + LOCKOUT_DURAION
+                    st.session_state.lockout_time = time.time() + LOCKOUT_DURATION
                     st.error("To many failed attempt. Locked for 60 seconds")
                     st.stop()
 
